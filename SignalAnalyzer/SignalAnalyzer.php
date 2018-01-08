@@ -45,11 +45,9 @@ class SignalAnalyzer{
         $curl = curl_init($this->url("FrontPanelKeys.aspx"));
         curl_setopt_array($curl, [
             CURLOPT_POST => true,
-            CURLOPT_POSTFIELDS => "__VIEWSTATE=".
-                                        $this->getViewState()->getViewState().
-                                    "&".Buttons::getConstantKeyFromString($buttonString).
-                                        "=".urlencode($buttonString),
-            CURLOPT_HEADER => ["Content-Type:application/x-www-form-urlencoded"],
+            CURLOPT_POSTFIELDS =>
+                "__VIEWSTATE=".urlencode($this->getViewState()->getViewState())."&".Buttons::getConstantKeyFromString($buttonString)."=".urlencode($buttonString),
+            CURLOPT_HEADER => array("Content-Type:application/x-www-form-urlencoded"),
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_TIMEOUT => 60
         ]);
@@ -62,7 +60,6 @@ class SignalAnalyzer{
         curl_close($curl);
         return true;
     }
-
     /**
      * Allows you to type a complete number in one command on the analyzer
      * @param int $number The number to press on the analyzer

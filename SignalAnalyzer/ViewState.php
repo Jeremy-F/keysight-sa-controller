@@ -1,7 +1,5 @@
 <?php
 namespace Jeremyfornarino\Ksac\SignalAnalyzer;
-use PHPUnit\Runner\Exception;
-
 require_once "SignalAnalyzer.php";
 class ViewState{
     /**
@@ -33,6 +31,7 @@ class ViewState{
         ]);
         $result = curl_exec($curl);
         if(curl_getinfo($curl, CURLINFO_HTTP_CODE) == 200){
+            curl_close($curl);
             if(preg_match('#name="__VIEWSTATE" id="__VIEWSTATE" value="(.*?)"#', $result, $data)) return $this->viewState = $data[1];
             throw new \Exception("Unable to retrieve the ViewState from the header");
         }
