@@ -6,7 +6,7 @@ use Jeremyfornarino\Ksac\SignalAnalyzer\Buttons;
 use Jeremyfornarino\Ksac\SignalAnalyzer\SignalAnalyzer;
 
 
-$ip = "147.215.193.22";
+$ip = "YOURIPSA";
 
 /** @var SignalAnalyzer $sa */
 $sa = new SignalAnalyzer($ip);
