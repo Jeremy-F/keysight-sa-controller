@@ -104,6 +104,27 @@ class SignalAnalyzer{
         return $this->viewState;
     }
 
+    /**
+     * Loading CSV Trace
+     * @param int $traceNumber Number of the trace
+     * @return string The CSV file data
+     */
+    public function loadCSVTrace(int $traceNumber = 1): string{
+        $url = $this->url("Trace{$traceNumber}.csv");
+        $curl = curl_init($url);
+        curl_setopt_array($curl, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 60
+        ]);
+        $result = curl_exec($curl);
+        $curl_result_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        if($curl_result_code != 200){
+            curl_close($curl);
+            return $this->loadCSVTrace($traceNumber);
+        }
+        curl_close($curl);
+        return $result;
+    }
 
 
 
