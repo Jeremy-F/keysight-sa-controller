@@ -105,11 +105,11 @@ class SignalAnalyzer{
     }
 
     /**
-     * Loading CSV Trace
+     * Loading Trace
      * @param int $traceNumber Number of the trace
      * @return string The CSV file data
      */
-    public function loadCSVTrace(int $traceNumber = 1): string{
+    public function loadTrace(int $traceNumber = 1): string{
         $url = $this->url("Trace{$traceNumber}.csv");
         $curl = curl_init($url);
         curl_setopt_array($curl, [
@@ -120,14 +120,17 @@ class SignalAnalyzer{
         $curl_result_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         if($curl_result_code != 200){
             curl_close($curl);
-            return $this->loadCSVTrace($traceNumber);
+            return $this->loadTrace($traceNumber);
         }
         curl_close($curl);
         return $result;
     }
 
-
-
+    public function loadTraceAsArray(int $traceNumber = 1): array {
+        $signalAnalyzerTrace = $this->loadTrace($traceNumber);
+        $traceAsArray = $this->exportTraceAsArray($signalAnalyzerTrace);
+        return $traceAsArray;
+    }
 
 
 
@@ -167,5 +170,23 @@ class SignalAnalyzer{
      */
     private function getViewState():ViewState{
         return $this->viewState;
+    }
+
+    /**
+     * @param $signalAnalyzerTrace
+     * @param $freqsAndDBM
+     * @return array
+     */
+    public static function exportTraceAsArray($signalAnalyzerTrace): array{
+        $traceAsArray = [];
+        if (preg_match_all("#([0-9\.]+)\,((\-|)[0-9\.]+)#", $signalAnalyzerTrace, $freqsAndDBM)) {
+            $numberOfFreqsAndDBM = count($freqsAndDBM[0]);
+            for ($i = 0; $i < $numberOfFreqsAndDBM; $i++) {
+                $currentFreq = floatval($freqsAndDBM[1][$i]);
+                $currentDBM = floatval($freqsAndDBM[2][$i]);
+                $traceAsArray[(string)$currentFreq] = $currentDBM;
+            }
+        }
+        return $traceAsArray;
     }
 }

@@ -1,0 +1,23 @@
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: jeremyfornarino
+ * Date: 09/01/2018
+ * Time: 15:26
+ */
+
+namespace Jeremyfornarino\Ksac\DataAnalyzer;
+require_once __DIR__."/../"."DataAnalyzer/"."DataAnalyzer.php";
+
+
+use Jeremyfornarino\Ksac\SignalAnalyzer\SignalAnalyzer;
+
+class DataAnalyzerJSON extends DataAnalyzer{
+    public function __construct(SignalAnalyzer $signalAnalyzer, array $columns){
+        parent::__construct($signalAnalyzer, $columns);
+    }
+    function getDataFormated() : string {
+        $resultArray = $this->loadDataAsArray();
+        return json_encode($resultArray);
+    }
+}

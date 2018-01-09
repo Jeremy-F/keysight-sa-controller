@@ -10,9 +10,4 @@ $ip = "YOURIPSA";
 
 /** @var SignalAnalyzer $sa */
 $sa = new SignalAnalyzer($ip);
-
-try {
-    $sa->pressButton(Buttons::freq);
-} catch (Exception $e) {
-    echo $e->getMessage();
-}
+var_dump($sa->loadTraceAsArray());
