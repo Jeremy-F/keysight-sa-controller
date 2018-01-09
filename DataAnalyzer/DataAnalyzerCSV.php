@@ -14,9 +14,8 @@ class DataAnalyzerCSV extends DataAnalyzer{
         if(! ( count($dataAsArray) > 0) ) return "";
         $columnsName = array_keys($dataAsArray[0]);
         $retString = join(",", $columnsName)."\n";
-
         foreach($dataAsArray AS $currentData){
-            foreach($dataAsArray AS $value){
+            foreach($currentData AS $value){
                 if(is_numeric($value)) $retString .= (string) $value;
                 elseif (is_string($value)) $retString .= "\"".$value."\"";
                 $retString .= ",";
