@@ -63,10 +63,10 @@ abstract class DataAnalyzer{
         $resultArray = [];
         foreach ($traceAsArray AS $frequency => $absolutePower) {
             $currentResultArray = [
-                "frequency" => $frequency,
-                "absolutePower" => $absolutePower
+                "frequency" => floatval($frequency),
+                "absolutePower" => floatval($absolutePower)
             ];
-            $currentResultArray = array_merge($currentResultArray, $this->calculateColumnsDataValues($frequency, $absolutePower), $traceAsArray);
+            $currentResultArray = array_merge($currentResultArray, $this->calculateColumnsDataValues($frequency, $absolutePower, $traceAsArray));
             $resultArray[] = $currentResultArray;
         }
         return $resultArray;
