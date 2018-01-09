@@ -1,13 +1,7 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: jeremyfornarino
- * Date: 09/01/2018
- * Time: 13:11
- */
-
 namespace Jeremyfornarino\Ksac\DataAnalyzer\Column;
 
+require_once "ColumnDefaultValue.php";
 
 abstract class Column{
     /** @var string */

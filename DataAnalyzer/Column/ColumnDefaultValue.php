@@ -1,13 +1,8 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: jeremyfornarino
- * Date: 09/01/2018
- * Time: 13:16
- */
 
 namespace Jeremyfornarino\Ksac\DataAnalyzer\Column;
 
+require_once "Column.php";
 
 class ColumnDefaultValue extends Column {
     private $defaultValue;
@@ -18,7 +13,7 @@ class ColumnDefaultValue extends Column {
      * @param string $columnName
      */
     public function __construct($defaultValue, $columnName = "defaultValue"){
-        super($columnName);
+        parent::__construct($columnName);
         $this->defaultValue = $defaultValue;
     }
 
