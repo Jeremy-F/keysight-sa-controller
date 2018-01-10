@@ -1,13 +1,8 @@
 <?php
 namespace Jeremyfornarino\Ksac\SignalAnalyzer;
-require_once "Buttons.php";
-require_once "ViewState.php";
-require_once "FrequencyType.php";
-require_once "Unit.php";
-/**
- * Class SignalAnalyzer
- * @author Jérémy Fornarino
- */
+foreach(glob(__DIR__."/*.php") AS $currentFileClass){
+    require_once $currentFileClass;
+}
 class SignalAnalyzer{
     /** @var string */
     private $hostname;
@@ -72,13 +67,7 @@ class SignalAnalyzer{
         if($number > 0) {
             $numberString = (string)$number;
             for($i = 0; $i < strlen($numberString); $i++){
-                $numberValue = Buttons::getConstantKeyFromInt(
-                    intval($numberString[$i])
-                );
-                var_dump($numberValue);
-                $this->pressButton(
-                    $numberValue
-                );
+                $this->pressButton($numberString[$i]);
             }
             return true;
         }return false;
@@ -97,12 +86,50 @@ class SignalAnalyzer{
     }
 
     /**
+     * @throws \Exception
+     */
+    public function restoreModeSetupDefaults() : void {
+        $this->pressButton(Buttons::modesetup);
+        $this->pressSoftkey(7);
+        $this->pressSoftkey(6);
+        sleep(1);
+        $this->pressButton(Buttons::enter1);
+    }
+
+    /**
+     * @param int $modeType
+     * @throws \Exception
+     */
+    public function updateMode(int $modeType){
+        $this->pressButton(Buttons::mode);
+        $this->pressSoftkey($modeType);
+    }
+    /**
+     * @param int $traceType
+     * @throws \Exception
+     */
+    public function updateTraceType(int $traceType){
+        $this->pressButton(Buttons::trace);
+        $this->pressSoftkey($traceType);
+    }
+
+    /**
+     * @param int $number
+     * @throws \Exception
+     */
+    public function updateAverageHoldNumber(int $number){
+        $this->pressButton(Buttons::meassetup);
+        $this->pressSoftkey(1);
+        $this->pressNumber($number);
+        $this->pressSoftkey(1);
+    }
+    /**
      * @param int $currentFrequency
      * @param int $unit
      * @throws \Exception
      */
     public function updateStartFrequency(int $currentFrequency, int $unit = Unit::Hz) : void{
-        $this->updateFrequency($currentFrequency, $unit, FrequencyType::start);
+        $this->updateFrequencyByType($currentFrequency, $unit, FrequencyType::start);
     }
 
     /**
@@ -111,7 +138,7 @@ class SignalAnalyzer{
      * @throws \Exception
      */
     public function updateStopFrequency(int $currentFrequency, int $unit = Unit::Hz) : void{
-        $this->updateFrequency($currentFrequency, $unit, FrequencyType::stop);
+        $this->updateFrequencyByType($currentFrequency, $unit, FrequencyType::stop);
     }
 
     /**
@@ -120,7 +147,7 @@ class SignalAnalyzer{
      * @throws \Exception
      */
     public function updateCenterFrequency(int $currentFrequency, int $unit = Unit::Hz) : void{
-        $this->updateFrequency($currentFrequency, $unit, FrequencyType::center);
+        $this->updateFrequencyByType($currentFrequency, $unit, FrequencyType::center);
     }
 
     /**
@@ -129,13 +156,21 @@ class SignalAnalyzer{
      * @param int $frequencyType
      * @throws \Exception
      */
-    public function updateFrequency(int $currentFrequency, int $unit = Unit::Hz, $frequencyType = FrequencyType::center) : void{
+    public function updateFrequencyByType(int $currentFrequency, int $unit = Unit::Hz, $frequencyType = FrequencyType::center) : void{
         $this->pressButton(Buttons::freq);
-        $buttonString = FrequencyType::frequencyTypeToSoftKeyButton($frequencyType);
-        var_dump($buttonString);
-        $this->pressButton($buttonString);
-        $this->pressNumber($currentFrequency);
-        $this->pressButton(Unit::unitToSoftkeyButton($unit));
+        $this->pressSoftkey($frequencyType);
+        $this->pressNumberWithUnit($currentFrequency, $unit);
+    }
+
+    /**
+     * @param int $freqStart
+     * @param int $freqStop
+     * @param int $unit
+     * @throws \Exception
+     */
+    public function updateFrequency(int $freqStart, int $freqStop, int $unit = Unit::Hz) : void{
+        $this->updateStartFrequency($freqStart, $unit);
+        $this->updateStopFrequency($freqStop, $unit);
     }
 
     /**
@@ -145,11 +180,23 @@ class SignalAnalyzer{
      */
     public function updateRBW(int $currentRBW, int $unit = Unit::Hz) : void{
         $this->pressButton(Buttons::bw);
-        $this->pressButton(Buttons::softkey1);
-        $this->pressNumber(Unit::unitToSoftkeyButton($unit));
-        $this->pressButton(Buttons::softkey3);
+        $this->pressSoftkey(1);
+        $this->pressNumberWithUnit($currentRBW, $unit);
     }
 
+    /**
+     * @param int $numberOfPoints
+     * @return bool
+     * @throws \Exception
+     */
+    public function updatePointsNumber(int $numberOfPoints = 1) : bool{
+        if($numberOfPoints < 1) return false;
+        $this->pressButton(Buttons::sweepcontrol);
+        $this->pressSoftkey(7);
+        $this->pressNumber($numberOfPoints);
+        $this->pressSoftkey(1);
+        return true;
+    }
 
     /**
      * Loading of viewState necessary for the use of the analyzer.
@@ -246,5 +293,23 @@ class SignalAnalyzer{
             }
         }
         return $traceAsArray;
+    }
+
+    /**
+     * @param int $currentFrequency
+     * @param int $unit
+     * @throws \Exception
+     */
+    public function pressNumberWithUnit(int $currentFrequency, int $unit): void{
+        $this->pressNumber($currentFrequency);
+        $this->pressSoftkey($unit);
+    }
+
+    /**
+     * @param int $softkeyNumber
+     * @throws \Exception
+     */
+    public function pressSoftkey(int $softkeyNumber){
+        $this->pressButton(SoftkeyButton::softKeyButtonFromInt($softkeyNumber));
     }
 }

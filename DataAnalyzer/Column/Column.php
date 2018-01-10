@@ -1,8 +1,8 @@
 <?php
 namespace Jeremyfornarino\Ksac\DataAnalyzer\Column;
-
-require_once "ColumnDefaultValue.php";
-
+foreach (glob(__DIR__."/"."*.php") AS $currentFile){
+    require_once $currentFile;
+}
 abstract class Column{
     /** @var string */
     private $name;

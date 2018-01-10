@@ -1,5 +1,4 @@
 <?php
-
 namespace Jeremyfornarino\Ksac\SignalAnalyzer;
 require_once "Buttons.php";
 class Buttons{

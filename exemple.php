@@ -1,25 +1,37 @@
 <?php
 
+
 require_once "SignalAnalyzer/SignalAnalyzer.php";
 require_once "DataAnalyzer/DataAnalyzer.php";
-require_once "DataAnalyzer/DataAnalyzerJSON.php";
-require_once "DataAnalyzer/DataAnalyzerCSV.php";
-require_once "DataAnalyzer/Column/Column.php";
 
-use Jeremyfornarino\Ksac\DataAnalyzer\Column\ColumnDefaultValue;
-use Jeremyfornarino\Ksac\DataAnalyzer\DataAnalyzerJSON;
-use Jeremyfornarino\Ksac\SignalAnalyzer\Buttons;
+use Jeremyfornarino\Ksac\DataAnalyzer\DataAnalyzerCSV;
 use Jeremyfornarino\Ksac\SignalAnalyzer\SignalAnalyzer;
+use Jeremyfornarino\Ksac\SignalAnalyzer\TraceDetectorType;
 use Jeremyfornarino\Ksac\SignalAnalyzer\Unit;
+use Jeremyfornarino\Ksac\DataAnalyzer\Column\ColumnDefaultValue;
 
 $ip = json_decode(file_get_contents("config.json"))->hostname;
 
 echo $ip;
 /** @var SignalAnalyzer $sa */
 $sa = new SignalAnalyzer($ip);
-$sa->updateCenterFrequency(400, Unit::MHz);
-$currentTime = time();
-$dataAnalyzer = new DataAnalyzerJSON($sa, [
-    new ColumnDefaultValue($currentTime, "currentTime")
-]);
-var_dump($dataAnalyzer->getDataFormated());
+$daCSV = new \Jeremyfornarino\Ksac\DataAnalyzer\DataAnalyzerJSON($sa, array(
+    new ColumnDefaultValue(time())
+));
+try {
+    $sa->restoreModeSetupDefaults();
+    $sa->updateTraceType(TraceDetectorType::traceAverage);
+    $sa->updateFrequency(400, 500, Unit::MHz);
+    $sa->updateAverageHoldNumber(1);
+    $sa->updateRBW(150, Unit::KHz);
+
+    for($i = 0; $i < 1000; $i++){
+        $sa->updatePointsNumber($i);
+        $jsonString = $daCSV->getDataFormated();
+        $jsonObj = json_decode($jsonString);
+        echo "\nAcquisitions : [".$i."|".count($jsonObj)."]";
+    }
+
+}catch (Exception $e) {
+    echo "Error : ".$e->getMessage();
+}

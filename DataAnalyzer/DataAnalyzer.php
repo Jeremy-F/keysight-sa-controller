@@ -1,9 +1,19 @@
 <?php
 namespace Jeremyfornarino\Ksac\DataAnalyzer;
-use Jeremyfornarino\Ksac\DataAnalyzer\Column\Column;
-use Jeremyfornarino\Ksac\SignalAnalyzer\SignalAnalyzer;
+
+foreach (glob(__DIR__."/"."*.php") AS $currentFile) {
+    echo $currentFile."\n";
+    require_once $currentFile;
+}
+
+require_once "Column/Column.php";
 
 require_once __DIR__."/../"."SignalAnalyzer/"."SignalAnalyzer.php";
+
+
+
+use Jeremyfornarino\Ksac\DataAnalyzer\Column\Column;
+use Jeremyfornarino\Ksac\SignalAnalyzer\SignalAnalyzer;
 abstract class DataAnalyzer{
     /** @var array */
     private $columns;
