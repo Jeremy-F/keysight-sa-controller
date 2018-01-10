@@ -2,6 +2,8 @@
 namespace Jeremyfornarino\Ksac\SignalAnalyzer;
 require_once "Buttons.php";
 require_once "ViewState.php";
+require_once "FrequencyType.php";
+require_once "Unit.php";
 /**
  * Class SignalAnalyzer
  * @author Jérémy Fornarino

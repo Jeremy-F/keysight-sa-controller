@@ -10,12 +10,14 @@ use Jeremyfornarino\Ksac\DataAnalyzer\Column\ColumnDefaultValue;
 use Jeremyfornarino\Ksac\DataAnalyzer\DataAnalyzerJSON;
 use Jeremyfornarino\Ksac\SignalAnalyzer\Buttons;
 use Jeremyfornarino\Ksac\SignalAnalyzer\SignalAnalyzer;
+use Jeremyfornarino\Ksac\SignalAnalyzer\Unit;
 
 $ip = json_decode(file_get_contents("config.json"))->hostname;
 
 echo $ip;
 /** @var SignalAnalyzer $sa */
 $sa = new SignalAnalyzer($ip);
+$sa->updateCenterFrequency(400, Unit::MHz);
 $currentTime = time();
 $dataAnalyzer = new DataAnalyzerJSON($sa, [
     new ColumnDefaultValue($currentTime, "currentTime")
