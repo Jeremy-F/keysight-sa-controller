@@ -11,9 +11,10 @@ use Jeremyfornarino\Ksac\DataAnalyzer\DataAnalyzerJSON;
 use Jeremyfornarino\Ksac\SignalAnalyzer\Buttons;
 use Jeremyfornarino\Ksac\SignalAnalyzer\SignalAnalyzer;
 
+$ip = json_decode(file_get_contents("config.json"))->hostname;
 
-$ip = "YOURIPSA";
-
+echo $ip;
+exit;
 /** @var SignalAnalyzer $sa */
 $sa = new SignalAnalyzer($ip);
 $currentTime = time();
