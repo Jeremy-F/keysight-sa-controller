@@ -129,7 +129,9 @@ class SignalAnalyzer{
      */
     public function updateFrequency(int $currentFrequency, int $unit = Unit::Hz, $frequencyType = FrequencyType::center) : void{
         $this->pressButton(Buttons::freq);
-        $this->pressButton(FrequencyType::frequencyTypeToSoftKeyButton($frequencyType));
+        $buttonString = FrequencyType::frequencyTypeToSoftKeyButton($frequencyType);
+        var_dump($buttonString);
+        $this->pressButton($buttonString);
         $this->pressNumber($currentFrequency);
         $this->pressButton(Unit::unitToSoftkeyButton($unit));
     }

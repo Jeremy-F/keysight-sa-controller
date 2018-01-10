@@ -7,6 +7,6 @@ class Unit{
     const GHz = 1;
 
     public static function unitToSoftkeyButton(int $unit){
-        return Buttons::getConstantKeyFromString("softkey".(string) ($unit));
+        return Buttons::getConstantValueFromString("softkey".(string) ($unit));
     }
 }

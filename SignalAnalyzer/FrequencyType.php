@@ -15,6 +15,6 @@ class FrequencyType{
     const stop = 4;
 
     public static function frequencyTypeToSoftKeyButton(int $frequencyType){
-        return Buttons::getConstantKeyFromString("softkey".((string) $frequencyType) );
+        return Buttons::getConstantValueFromString("softkey".((string) $frequencyType) );
     }
 }

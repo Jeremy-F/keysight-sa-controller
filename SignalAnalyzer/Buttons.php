@@ -134,11 +134,25 @@ class Buttons{
      * @param $string string Button name
      * @return string Buttons\Constant name
      */
-    public static function getConstantKeyFromString(string $string): string
-    {
+    public static function getConstantKeyFromString(string $string): string{
         foreach (Buttons::getConstants() as $constantKey => $constantValue) {
             if ($constantValue === $string) {
                 return $constantKey;
+            }
+        }
+        return "";
+    }
+
+    /**
+     * Return the value of the buttons's constant
+     * associated with the string key in parameter
+     * @param string $constantKey
+     * @return string
+     */
+    public static function getConstantValueFromString(string $constantKey) : string {
+        foreach (Buttons::getConstants() as $currentConstantKey => $constantValue) {
+            if ($currentConstantKey === $constantKey) {
+                return $constantValue;
             }
         }
         return "";
@@ -159,8 +173,7 @@ class Buttons{
      * Return all constants of Buttons
      * @return array
      */
-    private static function getConstants()
-    {
+    private static function getConstants(){
         $oClass = new \ReflectionClass(__CLASS__);
         return $oClass->getConstants();
     }
