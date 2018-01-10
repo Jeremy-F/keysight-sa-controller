@@ -91,6 +91,60 @@ class SignalAnalyzer{
         $url .= $action;
         return $url;
     }
+
+    /**
+     * @param int $currentFrequency
+     * @param int $unit
+     * @throws \Exception
+     */
+    public function updateStartFrequency(int $currentFrequency, int $unit = Unit::Hz) : void{
+        $this->updateFrequency($currentFrequency, $unit, FrequencyType::start);
+    }
+
+    /**
+     * @param int $currentFrequency
+     * @param int $unit
+     * @throws \Exception
+     */
+    public function updateStopFrequency(int $currentFrequency, int $unit = Unit::Hz) : void{
+        $this->updateFrequency($currentFrequency, $unit, FrequencyType::stop);
+    }
+
+    /**
+     * @param int $currentFrequency
+     * @param int $unit
+     * @throws \Exception
+     */
+    public function updateCenterFrequency(int $currentFrequency, int $unit = Unit::Hz) : void{
+        $this->updateFrequency($currentFrequency, $unit, FrequencyType::center);
+    }
+
+    /**
+     * @param int $currentFrequency
+     * @param int $unit
+     * @param int $frequencyType
+     * @throws \Exception
+     */
+    public function updateFrequency(int $currentFrequency, int $unit = Unit::Hz, $frequencyType = FrequencyType::center) : void{
+        $this->pressButton(Buttons::freq);
+        $this->pressButton(FrequencyType::frequencyTypeToSoftKeyButton($frequencyType));
+        $this->pressNumber($currentFrequency);
+        $this->pressButton(Unit::unitToSoftkeyButton($unit));
+    }
+
+    /**
+     * @param int $currentRBW
+     * @param int $unit
+     * @throws \Exception
+     */
+    public function updateRBW(int $currentRBW, int $unit = Unit::Hz) : void{
+        $this->pressButton(Buttons::bw);
+        $this->pressButton(Buttons::softkey1);
+        $this->pressNumber(Unit::unitToSoftkeyButton($unit));
+        $this->pressButton(Buttons::softkey3);
+    }
+
+
     /**
      * Loading of viewState necessary for the use of the analyzer.
      * @return ViewState
@@ -131,8 +185,6 @@ class SignalAnalyzer{
         $traceAsArray = $this->exportTraceAsArray($signalAnalyzerTrace);
         return $traceAsArray;
     }
-
-
 
 
 
