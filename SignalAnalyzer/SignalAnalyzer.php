@@ -48,7 +48,7 @@ class SignalAnalyzer{
         curl_setopt_array($curl, [
             CURLOPT_POST => true,
             CURLOPT_POSTFIELDS =>
-                "__VIEWSTATE=".urlencode($this->getViewState()->getViewState())."&".Buttons::getConstantKeyFromString($buttonString)."=".urlencode($buttonString),
+                "__VIEWSTATE=".urlencode($this->getViewState()->getViewState())."&".urlencode(Buttons::getConstantKeyFromString($buttonString))."=".urlencode($buttonString),
             CURLOPT_HEADER => array("Content-Type:application/x-www-form-urlencoded"),
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_TIMEOUT => 60
@@ -72,10 +72,12 @@ class SignalAnalyzer{
         if($number > 0) {
             $numberString = (string)$number;
             for($i = 0; $i < strlen($numberString); $i++){
+                $numberValue = Buttons::getConstantKeyFromInt(
+                    intval($numberString[$i])
+                );
+                var_dump($numberValue);
                 $this->pressButton(
-                    Buttons::getConstantKeyFromInt(
-                        intval($numberString[$i])
-                    )
+                    $numberValue
                 );
             }
             return true;
