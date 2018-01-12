@@ -1,11 +1,10 @@
 <?php
 require_once "vendor/autoload.php";
 
-use Jeremyfornarino\Ksac\DataAnalyzer\DataAnalyzerCSV;
 use Jeremyfornarino\Ksac\SignalAnalyzer\SignalAnalyzer;
-use Jeremyfornarino\Ksac\SignalAnalyzer\TraceDetectorType;
-use Jeremyfornarino\Ksac\SignalAnalyzer\Unit;
 use Jeremyfornarino\Ksac\DataAnalyzer\Column\ColumnDefaultValue;
+use Jeremyfornarino\Ksac\SignalAnalyzer\SoftkeyButton\TraceDetectorType;
+use Jeremyfornarino\Ksac\SignalAnalyzer\SoftkeyButton\Unit;
 
 
 $ip = json_decode(file_get_contents("config.json"))->hostname;
