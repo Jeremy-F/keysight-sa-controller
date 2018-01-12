@@ -1,139 +1,265 @@
 <?php
 namespace Jeremyfornarino\Ksac\SignalAnalyzer;
-require_once __DIR__."/../../../../vendor/autoload.php";
-class Buttons{
-    /** @var string */
+class Buttons
+{
+    /**
+ * @var string 
+*/
     const freq = "Freq/Channel";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const ret = "Return";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const softkey7 = "Softkey 7";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const softkey6 = "Softkey 6";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const softkey5 = "Softkey 5";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const softkey4 = "Softkey 4";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const softkey3 = "Softkey 3";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const softkey2 = "Softkey 2";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const softkey1 = "Softkey 1";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const enter2 = "Enter";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const select = "Select";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const tabb = "Tab&lt;-";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const tabf = "Tab-&gt;";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const fullscreen = "Full Screen";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const nextwindow = "Next Window";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const zoom = "Zoom";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const splitscreen = "Split Screen";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const backspace = "Bk.Sp &lt;-";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const delete = "Del";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const cancel = "Cancel/Esc";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const enter1 = "Enter";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const minus = "_";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const deci = ".";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const zero = "0";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const nine = "9";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const eight = "8";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const seven = "7";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const six = "6";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const five = "5";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const four = "4";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const three = "3";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const two = "2";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const one = "1";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const down = "Down";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const left = "Left";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const right = "Right";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const up = "Up";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const restart = "Restart";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const cont = "Cont";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const single = "Single";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const userpreset = "User Preset";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const quicksave = "Quick Save";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const modePreset = "Mode Preset";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const system = "System";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const markerfunction = "Marker Fn";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const markerNext = "Marker -&gt;";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const peaksearch = "Peak Search";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const mareker = "Marker";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const sweepcontrol = "Swp/Control";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const meassetup = "Meas Setup";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const meas = "Meas";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const trigger = "Trigger";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const modesetup = "Mode Setup";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const mode = "Mode";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const source = "Source";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const trace = "Trace/Det";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const amptd = "Amptd/YScale";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const bw = "BW";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const view = "View/Display";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const span = "Span/XScale";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const autocouple = "Auto Couple";
-    /** @var string */
+    /**
+ * @var string 
+*/
     const input = "Input/Output";
 
     /**
      * Return the name of the buttons'constant
      * associated with the string in parameter
-     * @param $string string Button name
+     *
+     * @param  $string string Button name
      * @return string Buttons\Constant name
      */
-    public static function getConstantKeyFromString(string $string): string{
+    public static function getConstantKeyFromString(string $string): string
+    {
         foreach (Buttons::getConstants() as $constantKey => $constantValue) {
             if ($constantValue === $string) {
                 return $constantKey;
@@ -145,10 +271,12 @@ class Buttons{
     /**
      * Return the value of the buttons's constant
      * associated with the string key in parameter
-     * @param string $constantKey
+     *
+     * @param  string $constantKey
      * @return string
      */
-    public static function getConstantValueFromString(string $constantKey) : string {
+    public static function getConstantValueFromString(string $constantKey) : string 
+    {
         foreach (Buttons::getConstants() as $currentConstantKey => $constantValue) {
             if ($currentConstantKey === $constantKey) {
                 return $constantValue;
@@ -160,7 +288,8 @@ class Buttons{
     /**
      * Return the name of the buttons'constant
      * associated with the string in parameter
-     * @param $int int Button name
+     *
+     * @param  $int int Button name
      * @return string Buttons\Constant name
      */
     public static function getConstantKeyFromInt(int $int): string
@@ -170,9 +299,11 @@ class Buttons{
 
     /**
      * Return all constants of Buttons
+     *
      * @return array
      */
-    private static function getConstants(){
+    private static function getConstants()
+    {
         $oClass = new \ReflectionClass(__CLASS__);
         return $oClass->getConstants();
     }

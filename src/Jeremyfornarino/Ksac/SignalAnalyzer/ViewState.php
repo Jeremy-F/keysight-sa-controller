@@ -1,20 +1,24 @@
 <?php
 namespace Jeremyfornarino\Ksac\SignalAnalyzer;
-require_once __DIR__."/../../../../vendor/autoload.php";
-class ViewState{
+class ViewState
+{
     /**
      * @var SignalAnalyzer
      */
     private $signalAnalyzer;
-    /** @var string */
+    /**
+     * @var string 
+     */
     private $viewState;
 
     /**
      * ViewState constructor.
-     * @param SignalAnalyzer $signalAnalyzer
+     *
+     * @param  SignalAnalyzer $signalAnalyzer
      * @throws \Exception in case of not retrive the viewState
      */
-    public function __construct(SignalAnalyzer $signalAnalyzer){
+    public function __construct(SignalAnalyzer $signalAnalyzer)
+    {
         $this->signalAnalyzer = $signalAnalyzer;
     }
     /**
@@ -22,23 +26,28 @@ class ViewState{
      * @return string
      * @throws \Exception
      */
-    public function loadViewState() : string{
+    public function loadViewState() : string
+    {
         $curl = curl_init($this->signalAnalyzer->url("FrontPanelKeys.aspx"));
-        curl_setopt_array($curl, [
+        curl_setopt_array(
+            $curl, [
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HEADER => true,
             CURLOPT_TIMEOUT => 60,
-        ]);
+            ]
+        );
         $result = curl_exec($curl);
-        if(curl_getinfo($curl, CURLINFO_HTTP_CODE) == 200){
+        if(curl_getinfo($curl, CURLINFO_HTTP_CODE) == 200) {
             curl_close($curl);
-            if(preg_match('#name="__VIEWSTATE" id="__VIEWSTATE" value="(.*?)"#', $result, $data)) return $this->viewState = $data[1];
+            if(preg_match('#name="__VIEWSTATE" id="__VIEWSTATE" value="(.*?)"#', $result, $data)) { return $this->viewState = $data[1];
+            }
             throw new \Exception("Unable to retrieve the ViewState from the header");
         }
         throw new \Exception("An error occurred while retrieving ViewState");
     }
 
-    public function getViewState(){
+    public function getViewState()
+    {
         return $this->viewState;
     }
 

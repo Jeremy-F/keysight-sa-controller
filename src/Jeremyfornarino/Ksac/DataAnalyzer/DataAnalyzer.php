@@ -3,15 +3,20 @@ namespace Jeremyfornarino\Ksac\DataAnalyzer;
 use Jeremyfornarino\Ksac\DataAnalyzer\Column\Column;
 use Jeremyfornarino\Ksac\SignalAnalyzer\SignalAnalyzer;
 
-require_once __DIR__."/../../../../vendor/autoload.php";
 
-abstract class DataAnalyzer{
-    /** @var array */
+abstract class DataAnalyzer
+{
+    /**
+     * @var array 
+     */
     private $columns;
-    /** @var SignalAnalyzer */
+    /**
+     * @var SignalAnalyzer 
+     */
     private $signalAnalyzer;
 
-    public function __construct(SignalAnalyzer $signalAnalyzer, array $columns){
+    public function __construct(SignalAnalyzer $signalAnalyzer, array $columns)
+    {
         $this->columns = $columns;
         $this->signalAnalyzer = $signalAnalyzer;
     }
@@ -19,28 +24,34 @@ abstract class DataAnalyzer{
     /**
      * @return array
      */
-    public function getColumns(): array{
+    public function getColumns(): array
+    {
         return $this->columns;
     }
 
     /**
      * @return SignalAnalyzer
      */
-    public function getSignalAnalyzer(): SignalAnalyzer{
+    public function getSignalAnalyzer(): SignalAnalyzer
+    {
         return $this->signalAnalyzer;
     }
     abstract function getDataFormated();
 
     /**
      * For a given pair "frequency, absolute value" we calculate the values for each column
-     * @param $currentFrequency
-     * @param $currentAbsolutPower
-     * @param array $data
+     *
+     * @param  $currentFrequency
+     * @param  $currentAbsolutPower
+     * @param  array               $data
      * @return array
      */
-    protected function calculateColumnsDataValues($currentFrequency, $currentAbsolutPower,$data = []) : array{
+    protected function calculateColumnsDataValues($currentFrequency, $currentAbsolutPower,$data = []) : array
+    {
         $columnsDataValues = [];
-        /** @var Column $columns */
+        /**
+ * @var Column $columns 
+*/
         foreach($this->getColumns() AS $columns){
             $columnsDataValues[$columns->getName()] = $columns->getValueFor($currentFrequency, $currentAbsolutPower, $data);
         }
@@ -57,9 +68,11 @@ abstract class DataAnalyzer{
      *      columnbName => calculatedValueForColumnB
      *      ...
      *  ]
+     *
      * @return array
      */
-    public function loadDataAsArray(): array{
+    public function loadDataAsArray(): array
+    {
         $traceAsArray = $this->getSignalAnalyzer()->loadTraceAsArray();
         $resultArray = [];
         foreach ($traceAsArray AS $frequency => $absolutePower) {
@@ -76,10 +89,11 @@ abstract class DataAnalyzer{
     /**
      * Allows you to directly save formatted data in the file specified as parameter
      *
-     * @param string $filepath File where the data are stored
+     * @param  string $filepath File where the data are stored
      * @return bool True if the recording was done well, else false
      */
-    public function saveDataIn(string $filepath) : bool {
+    public function saveDataIn(string $filepath) : bool 
+    {
         return file_put_contents($filepath, $this->getDataFormated());
     }
 }
