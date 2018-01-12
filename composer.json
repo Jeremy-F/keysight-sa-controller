@@ -13,6 +13,9 @@
             "email": "jeremy.fornarino@gmail.com"
         }
     ],
+    "require":{
+        "php": ">=7",
+    },
     "autoload": {
         "psr-4" : {
             "Jeremyfornarino\\Ksac\\DataAnalyzer\\" : "src/Jeremyfornarino/Ksac/DataAnalyzer",
