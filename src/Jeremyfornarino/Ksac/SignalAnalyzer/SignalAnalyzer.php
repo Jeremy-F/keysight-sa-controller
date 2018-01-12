@@ -1,6 +1,9 @@
 <?php
 namespace Jeremyfornarino\Ksac\SignalAnalyzer;
+use Jeremyfornarino\Ksac\SignalAnalyzer\SoftkeyButton\FrequencyType;
 use Jeremyfornarino\Ksac\SignalAnalyzer\SoftkeyButton\SoftkeyButton;
+use Jeremyfornarino\Ksac\SignalAnalyzer\SoftkeyButton\Unit;
+
 class SignalAnalyzer
 {
     /**
