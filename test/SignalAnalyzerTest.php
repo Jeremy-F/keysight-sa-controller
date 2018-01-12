@@ -1,6 +1,7 @@
 <?php
-require_once __DIR__."/../SignalAnalyzer/SignalAnalyzer.php";
 use Jeremyfornarino\Ksac\SignalAnalyzer\SignalAnalyzer;
+
+require_once __DIR__."/../vendor/autoload.php";
 class SignalAnalyzerTest extends \PHPUnit\Framework\TestCase {
     public function setUp(){
         parent::setUp();

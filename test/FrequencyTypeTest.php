@@ -1,8 +1,9 @@
 <?php
 
-use Jeremyfornarino\Ksac\SignalAnalyzer\FrequencyType;
+use Jeremyfornarino\Ksac\SignalAnalyzer\SoftkeyButton\FrequencyType;
 
-require_once __DIR__."/../SignalAnalyzer/SignalAnalyzer.php";
+require_once __DIR__ . "/../vendor/autoload.php";
+
 
 class FrequencyTypeTest extends \PHPUnit\Framework\TestCase {
 

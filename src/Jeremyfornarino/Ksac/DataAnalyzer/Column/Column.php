@@ -1,8 +1,6 @@
 <?php
 namespace Jeremyfornarino\Ksac\DataAnalyzer\Column;
-foreach (glob(__DIR__."/"."*.php") AS $currentFile){
-    require_once $currentFile;
-}
+require_once __DIR__."/../../../../../vendor/autoload.php";
 abstract class Column{
     /** @var string */
     private $name;

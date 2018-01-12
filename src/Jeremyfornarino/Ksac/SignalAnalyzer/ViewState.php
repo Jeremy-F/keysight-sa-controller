@@ -1,6 +1,6 @@
 <?php
 namespace Jeremyfornarino\Ksac\SignalAnalyzer;
-require_once "SignalAnalyzer.php";
+require_once __DIR__."/../../../../vendor/autoload.php";
 class ViewState{
     /**
      * @var SignalAnalyzer

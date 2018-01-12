@@ -21,11 +21,11 @@ $daCSV = new \Jeremyfornarino\Ksac\DataAnalyzer\DataAnalyzerJSON($sa, array(
 try {
     $sa->restoreModeSetupDefaults();
     $sa->updateTraceType(TraceDetectorType::traceAverage);
-    $sa->updateFrequency(400, 500, Unit::MHz);
+    $sa->updateFrequency(775, 825, Unit::MHz);
     $sa->updateAverageHoldNumber(1);
-    $sa->updateRBW(150, Unit::KHz);
+    $sa->updateRBW(390, Unit::KHz);
 
-    for($i = 0; $i < 1000; $i++){
+    for($i = 50; $i < 500; $i+=10){
         $sa->updatePointsNumber($i);
         $jsonString = $daCSV->getDataFormated();
         $jsonObj = json_decode($jsonString);

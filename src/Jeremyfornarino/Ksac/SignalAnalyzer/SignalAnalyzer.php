@@ -1,8 +1,7 @@
 <?php
 namespace Jeremyfornarino\Ksac\SignalAnalyzer;
-foreach(glob(__DIR__."/*.php") AS $currentFileClass){
-    require_once $currentFileClass;
-}
+use Jeremyfornarino\Ksac\SignalAnalyzer\SoftkeyButton\SoftkeyButton;
+require_once __DIR__."/../../../../vendor/autoload.php";
 class SignalAnalyzer{
     /** @var string */
     private $hostname;

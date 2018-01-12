@@ -3,7 +3,8 @@
     "description": "This php library allows you to remotely control a Keysight signal analyzer",
     "type": "library",
     "require-dev": {
-        "phpunit/phpunit": "^6.5"
+        "phpunit/phpunit": "^6.5",
+        "phpdocumentor/phpdocumentor": "2.*"
     },
     "license": "MIT",
     "authors": [
@@ -12,5 +13,13 @@
             "email": "jeremy.fornarino@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4" : {
+            "Jeremyfornarino\\Ksac\\DataAnalyzer\\" : "src/Jeremyfornarino/Ksac/DataAnalyzer",
+            "Jeremyfornarino\\Ksac\\DataAnalyzer\\Column\\" : "src/Jeremyfornarino/Ksac/DataAnalyzer/Column",
+            "Jeremyfornarino\\Ksac\\SignalAnalyzer\\" : "src/Jeremyfornarino/Ksac/SignalAnalyzer/",
+            "Jeremyfornarino\\Ksac\\SignalAnalyzer\\SoftkeyButton\\" : "src/Jeremyfornarino/Ksac/SignalAnalyzer/SoftkeyButton"
+        }
+    },
     "minimum-stability": "dev"
 }

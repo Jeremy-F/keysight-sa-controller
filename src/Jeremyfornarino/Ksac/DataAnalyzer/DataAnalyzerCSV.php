@@ -1,9 +1,7 @@
 <?php
 namespace Jeremyfornarino\Ksac\DataAnalyzer;
-require_once __DIR__."/../"."DataAnalyzer/"."DataAnalyzer.php";
-
-
 use Jeremyfornarino\Ksac\SignalAnalyzer\SignalAnalyzer;
+require_once __DIR__."/../../../../vendor/autoload.php";
 
 class DataAnalyzerCSV extends DataAnalyzer{
     public function __construct(SignalAnalyzer $signalAnalyzer, array $columns){

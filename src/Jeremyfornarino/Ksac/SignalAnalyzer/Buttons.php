@@ -1,6 +1,6 @@
 <?php
 namespace Jeremyfornarino\Ksac\SignalAnalyzer;
-require_once "Buttons.php";
+require_once __DIR__."/../../../../vendor/autoload.php";
 class Buttons{
     /** @var string */
     const freq = "Freq/Channel";

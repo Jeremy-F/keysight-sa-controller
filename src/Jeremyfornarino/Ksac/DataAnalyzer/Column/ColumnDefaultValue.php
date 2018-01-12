@@ -1,9 +1,6 @@
 <?php
-
 namespace Jeremyfornarino\Ksac\DataAnalyzer\Column;
-
-require_once "Column.php";
-
+require_once __DIR__."/../../../../../vendor/autoload.php";
 class ColumnDefaultValue extends Column {
     private $defaultValue;
 
