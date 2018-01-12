@@ -25,4 +25,15 @@ class ColumnDefaultValue extends Column
     {
         return $this->defaultValue;
     }
+
+    /**
+     * @param mixed $defaultValue
+     */
+    public function setDefaultValue($defaultValue): void
+    {
+        $this->defaultValue = $defaultValue;
+    }
+
+
+
 }
