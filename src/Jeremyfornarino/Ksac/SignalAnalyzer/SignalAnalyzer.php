@@ -55,8 +55,8 @@ class SignalAnalyzer
     public function pressButton(string $buttonString) : bool
     {
         $this->loadViewState();
-        $curl = curl_init($this->url("FrontPanelKeys.aspx"));
-        curl_setopt_array(
+        $curl = \curl_init($this->url("FrontPanelKeys.aspx"));
+        \curl_setopt_array(
             $curl, [
             CURLOPT_POST => true,
             CURLOPT_POSTFIELDS =>
@@ -66,13 +66,13 @@ class SignalAnalyzer
             CURLOPT_TIMEOUT => 60
             ]
         );
-        curl_exec($curl);
-        if(curl_getinfo($curl, CURLINFO_HTTP_CODE) != 200) {
-            curl_close($curl);
+        \curl_exec($curl);
+        if(\curl_getinfo($curl, CURLINFO_HTTP_CODE) != 200) {
+            \curl_close($curl);
             sleep(1);
             return $this->pressButton($buttonString);
         }
-        curl_close($curl);
+        \curl_close($curl);
         return true;
     }
     /**
@@ -256,20 +256,20 @@ class SignalAnalyzer
     public function loadTrace(int $traceNumber = 1): string
     {
         $url = $this->url("Trace{$traceNumber}.csv");
-        $curl = curl_init($url);
-        curl_setopt_array(
+        $curl = \curl_init($url);
+        \curl_setopt_array(
             $curl, [
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_TIMEOUT => 60
             ]
         );
-        $result = curl_exec($curl);
-        $curl_result_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        $result = \curl_exec($curl);
+        $curl_result_code = \curl_getinfo($curl, CURLINFO_HTTP_CODE);
         if($curl_result_code != 200) {
-            curl_close($curl);
+            \curl_close($curl);
             return $this->loadTrace($traceNumber);
         }
-        curl_close($curl);
+        \curl_close($curl);
         return $result;
     }
 
