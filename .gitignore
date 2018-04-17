@@ -4,4 +4,4 @@
 *.iml
 /vendor/
 config.json
-docs/
+#docs/

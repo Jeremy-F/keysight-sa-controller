@@ -1,0 +1,1949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/Jeremyfornarino.html">\Jeremyfornarino</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">76</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1257516160"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1257516160" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-414339994"></a>
+                                <a href="../namespaces/Jeremyfornarino.html" style="margin-left: 30px; padding-left: 0">Jeremyfornarino</a>
+            </div>
+            <div id="namespace-414339994" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1069329429"></a>
+                                <a href="../namespaces/Jeremyfornarino.Ksac.html" style="margin-left: 30px; padding-left: 0">Ksac</a>
+            </div>
+            <div id="namespace-1069329429" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1040183860"></a>
+                                <a href="../namespaces/Jeremyfornarino.Ksac.DataAnalyzer.html" style="margin-left: 30px; padding-left: 0">DataAnalyzer</a>
+            </div>
+            <div id="namespace-1040183860" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-378401679"></a>
+                                <a href="../namespaces/Jeremyfornarino.Ksac.DataAnalyzer.Column.html" style="margin-left: 30px; padding-left: 0">Column</a>
+            </div>
+            <div id="namespace-378401679" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Jeremyfornarino.Ksac.DataAnalyzer.Column.Column.html">Column</a></li>
+                                                    <li class="class"><a href="../classes/Jeremyfornarino.Ksac.DataAnalyzer.Column.ColumnDefaultValue.html">ColumnDefaultValue</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Jeremyfornarino.Ksac.DataAnalyzer.DataAnalyzer.html">DataAnalyzer</a></li>
+                                                    <li class="class"><a href="../classes/Jeremyfornarino.Ksac.DataAnalyzer.DataAnalyzerCSV.html">DataAnalyzerCSV</a></li>
+                                                    <li class="class"><a href="../classes/Jeremyfornarino.Ksac.DataAnalyzer.DataAnalyzerJSON.html">DataAnalyzerJSON</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-38496061"></a>
+                                <a href="../namespaces/Jeremyfornarino.Ksac.SignalAnalyzer.html" style="margin-left: 30px; padding-left: 0">SignalAnalyzer</a>
+            </div>
+            <div id="namespace-38496061" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-370214375"></a>
+                                <a href="../namespaces/Jeremyfornarino.Ksac.SignalAnalyzer.SoftkeyButton.html" style="margin-left: 30px; padding-left: 0">SoftkeyButton</a>
+            </div>
+            <div id="namespace-370214375" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.SoftkeyButton.FrequencyType.html">FrequencyType</a></li>
+                                                    <li class="class"><a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.SoftkeyButton.ModeType.html">ModeType</a></li>
+                                                    <li class="class"><a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.SoftkeyButton.SoftkeyButton.html">SoftkeyButton</a></li>
+                                                    <li class="class"><a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.SoftkeyButton.TraceDetectorType.html">TraceDetectorType</a></li>
+                                                    <li class="class"><a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.SoftkeyButton.Unit.html">Unit</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html">Buttons</a></li>
+                                                    <li class="class"><a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.SignalAnalyzer.html">SignalAnalyzer</a></li>
+                                                    <li class="class"><a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.ViewState.html">ViewState</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/Jeremyfornarino.Ksac.SignalAnalyzer.html">\Jeremyfornarino\Ksac\SignalAnalyzer</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\Jeremyfornarino\Ksac\SignalAnalyzer</small>Buttons</h1>
+                    <p><em></em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#method_getConstantKeyFromString" class="">getConstantKeyFromString()</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#method_getConstantValueFromString" class="">getConstantValueFromString()</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#method_getConstantKeyFromInt" class="">getConstantKeyFromInt()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_freq" class="">freq</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_ret" class="">ret</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_softkey7" class="">softkey7</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_softkey6" class="">softkey6</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_softkey5" class="">softkey5</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_softkey4" class="">softkey4</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_softkey3" class="">softkey3</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_softkey2" class="">softkey2</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_softkey1" class="">softkey1</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_enter2" class="">enter2</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_select" class="">select</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_tabb" class="">tabb</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_tabf" class="">tabf</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_fullscreen" class="">fullscreen</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_nextwindow" class="">nextwindow</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_zoom" class="">zoom</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_splitscreen" class="">splitscreen</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_backspace" class="">backspace</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_delete" class="">delete</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_cancel" class="">cancel</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_enter1" class="">enter1</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_minus" class="">minus</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_deci" class="">deci</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_zero" class="">zero</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_nine" class="">nine</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_eight" class="">eight</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_seven" class="">seven</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_six" class="">six</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_five" class="">five</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_four" class="">four</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_three" class="">three</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_two" class="">two</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_one" class="">one</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_down" class="">down</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_left" class="">left</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_right" class="">right</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_up" class="">up</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_restart" class="">restart</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_cont" class="">cont</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_single" class="">single</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_userpreset" class="">userpreset</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_quicksave" class="">quicksave</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_modePreset" class="">modePreset</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_system" class="">system</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_markerfunction" class="">markerfunction</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_markerNext" class="">markerNext</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_peaksearch" class="">peaksearch</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_mareker" class="">mareker</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_sweepcontrol" class="">sweepcontrol</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_meassetup" class="">meassetup</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_meas" class="">meas</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_trigger" class="">trigger</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_modesetup" class="">modesetup</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_mode" class="">mode</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_source" class="">source</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_trace" class="">trace</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_amptd" class="">amptd</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_bw" class="">bw</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_view" class="">view</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_span" class="">span</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_autocouple" class="">autocouple</a><br />
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#constant_input" class="">input</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/Jeremyfornarino.Ksac.SignalAnalyzer.Buttons.html#method_getConstants" class="">getConstants()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/SignalAnalyzer.Buttons.html"><div class="path-wrapper">SignalAnalyzer/Buttons.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Jeremyfornarino\Ksac\SignalAnalyzer\Buttons</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_freq" name="constant_freq" class="anchor"></a>
+            <article id="constant_freq" class="constant">
+                <h3 class="">freq</h3>
+                <pre class="signature">freq</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ret" name="constant_ret" class="anchor"></a>
+            <article id="constant_ret" class="constant">
+                <h3 class="">ret</h3>
+                <pre class="signature">ret</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_softkey7" name="constant_softkey7" class="anchor"></a>
+            <article id="constant_softkey7" class="constant">
+                <h3 class="">softkey7</h3>
+                <pre class="signature">softkey7</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_softkey6" name="constant_softkey6" class="anchor"></a>
+            <article id="constant_softkey6" class="constant">
+                <h3 class="">softkey6</h3>
+                <pre class="signature">softkey6</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_softkey5" name="constant_softkey5" class="anchor"></a>
+            <article id="constant_softkey5" class="constant">
+                <h3 class="">softkey5</h3>
+                <pre class="signature">softkey5</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_softkey4" name="constant_softkey4" class="anchor"></a>
+            <article id="constant_softkey4" class="constant">
+                <h3 class="">softkey4</h3>
+                <pre class="signature">softkey4</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_softkey3" name="constant_softkey3" class="anchor"></a>
+            <article id="constant_softkey3" class="constant">
+                <h3 class="">softkey3</h3>
+                <pre class="signature">softkey3</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_softkey2" name="constant_softkey2" class="anchor"></a>
+            <article id="constant_softkey2" class="constant">
+                <h3 class="">softkey2</h3>
+                <pre class="signature">softkey2</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_softkey1" name="constant_softkey1" class="anchor"></a>
+            <article id="constant_softkey1" class="constant">
+                <h3 class="">softkey1</h3>
+                <pre class="signature">softkey1</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_enter2" name="constant_enter2" class="anchor"></a>
+            <article id="constant_enter2" class="constant">
+                <h3 class="">enter2</h3>
+                <pre class="signature">enter2</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_select" name="constant_select" class="anchor"></a>
+            <article id="constant_select" class="constant">
+                <h3 class="">select</h3>
+                <pre class="signature">select</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_tabb" name="constant_tabb" class="anchor"></a>
+            <article id="constant_tabb" class="constant">
+                <h3 class="">tabb</h3>
+                <pre class="signature">tabb</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_tabf" name="constant_tabf" class="anchor"></a>
+            <article id="constant_tabf" class="constant">
+                <h3 class="">tabf</h3>
+                <pre class="signature">tabf</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_fullscreen" name="constant_fullscreen" class="anchor"></a>
+            <article id="constant_fullscreen" class="constant">
+                <h3 class="">fullscreen</h3>
+                <pre class="signature">fullscreen</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_nextwindow" name="constant_nextwindow" class="anchor"></a>
+            <article id="constant_nextwindow" class="constant">
+                <h3 class="">nextwindow</h3>
+                <pre class="signature">nextwindow</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_zoom" name="constant_zoom" class="anchor"></a>
+            <article id="constant_zoom" class="constant">
+                <h3 class="">zoom</h3>
+                <pre class="signature">zoom</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_splitscreen" name="constant_splitscreen" class="anchor"></a>
+            <article id="constant_splitscreen" class="constant">
+                <h3 class="">splitscreen</h3>
+                <pre class="signature">splitscreen</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_backspace" name="constant_backspace" class="anchor"></a>
+            <article id="constant_backspace" class="constant">
+                <h3 class="">backspace</h3>
+                <pre class="signature">backspace</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_delete" name="constant_delete" class="anchor"></a>
+            <article id="constant_delete" class="constant">
+                <h3 class="">delete</h3>
+                <pre class="signature">delete</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_cancel" name="constant_cancel" class="anchor"></a>
+            <article id="constant_cancel" class="constant">
+                <h3 class="">cancel</h3>
+                <pre class="signature">cancel</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_enter1" name="constant_enter1" class="anchor"></a>
+            <article id="constant_enter1" class="constant">
+                <h3 class="">enter1</h3>
+                <pre class="signature">enter1</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_minus" name="constant_minus" class="anchor"></a>
+            <article id="constant_minus" class="constant">
+                <h3 class="">minus</h3>
+                <pre class="signature">minus</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_deci" name="constant_deci" class="anchor"></a>
+            <article id="constant_deci" class="constant">
+                <h3 class="">deci</h3>
+                <pre class="signature">deci</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_zero" name="constant_zero" class="anchor"></a>
+            <article id="constant_zero" class="constant">
+                <h3 class="">zero</h3>
+                <pre class="signature">zero</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_nine" name="constant_nine" class="anchor"></a>
+            <article id="constant_nine" class="constant">
+                <h3 class="">nine</h3>
+                <pre class="signature">nine</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_eight" name="constant_eight" class="anchor"></a>
+            <article id="constant_eight" class="constant">
+                <h3 class="">eight</h3>
+                <pre class="signature">eight</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_seven" name="constant_seven" class="anchor"></a>
+            <article id="constant_seven" class="constant">
+                <h3 class="">seven</h3>
+                <pre class="signature">seven</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_six" name="constant_six" class="anchor"></a>
+            <article id="constant_six" class="constant">
+                <h3 class="">six</h3>
+                <pre class="signature">six</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_five" name="constant_five" class="anchor"></a>
+            <article id="constant_five" class="constant">
+                <h3 class="">five</h3>
+                <pre class="signature">five</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_four" name="constant_four" class="anchor"></a>
+            <article id="constant_four" class="constant">
+                <h3 class="">four</h3>
+                <pre class="signature">four</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_three" name="constant_three" class="anchor"></a>
+            <article id="constant_three" class="constant">
+                <h3 class="">three</h3>
+                <pre class="signature">three</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_two" name="constant_two" class="anchor"></a>
+            <article id="constant_two" class="constant">
+                <h3 class="">two</h3>
+                <pre class="signature">two</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_one" name="constant_one" class="anchor"></a>
+            <article id="constant_one" class="constant">
+                <h3 class="">one</h3>
+                <pre class="signature">one</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_down" name="constant_down" class="anchor"></a>
+            <article id="constant_down" class="constant">
+                <h3 class="">down</h3>
+                <pre class="signature">down</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_left" name="constant_left" class="anchor"></a>
+            <article id="constant_left" class="constant">
+                <h3 class="">left</h3>
+                <pre class="signature">left</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_right" name="constant_right" class="anchor"></a>
+            <article id="constant_right" class="constant">
+                <h3 class="">right</h3>
+                <pre class="signature">right</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_up" name="constant_up" class="anchor"></a>
+            <article id="constant_up" class="constant">
+                <h3 class="">up</h3>
+                <pre class="signature">up</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_restart" name="constant_restart" class="anchor"></a>
+            <article id="constant_restart" class="constant">
+                <h3 class="">restart</h3>
+                <pre class="signature">restart</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_cont" name="constant_cont" class="anchor"></a>
+            <article id="constant_cont" class="constant">
+                <h3 class="">cont</h3>
+                <pre class="signature">cont</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_single" name="constant_single" class="anchor"></a>
+            <article id="constant_single" class="constant">
+                <h3 class="">single</h3>
+                <pre class="signature">single</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_userpreset" name="constant_userpreset" class="anchor"></a>
+            <article id="constant_userpreset" class="constant">
+                <h3 class="">userpreset</h3>
+                <pre class="signature">userpreset</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_quicksave" name="constant_quicksave" class="anchor"></a>
+            <article id="constant_quicksave" class="constant">
+                <h3 class="">quicksave</h3>
+                <pre class="signature">quicksave</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_modePreset" name="constant_modePreset" class="anchor"></a>
+            <article id="constant_modePreset" class="constant">
+                <h3 class="">modePreset</h3>
+                <pre class="signature">modePreset</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_system" name="constant_system" class="anchor"></a>
+            <article id="constant_system" class="constant">
+                <h3 class="">system</h3>
+                <pre class="signature">system</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_markerfunction" name="constant_markerfunction" class="anchor"></a>
+            <article id="constant_markerfunction" class="constant">
+                <h3 class="">markerfunction</h3>
+                <pre class="signature">markerfunction</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_markerNext" name="constant_markerNext" class="anchor"></a>
+            <article id="constant_markerNext" class="constant">
+                <h3 class="">markerNext</h3>
+                <pre class="signature">markerNext</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_peaksearch" name="constant_peaksearch" class="anchor"></a>
+            <article id="constant_peaksearch" class="constant">
+                <h3 class="">peaksearch</h3>
+                <pre class="signature">peaksearch</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_mareker" name="constant_mareker" class="anchor"></a>
+            <article id="constant_mareker" class="constant">
+                <h3 class="">mareker</h3>
+                <pre class="signature">mareker</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_sweepcontrol" name="constant_sweepcontrol" class="anchor"></a>
+            <article id="constant_sweepcontrol" class="constant">
+                <h3 class="">sweepcontrol</h3>
+                <pre class="signature">sweepcontrol</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_meassetup" name="constant_meassetup" class="anchor"></a>
+            <article id="constant_meassetup" class="constant">
+                <h3 class="">meassetup</h3>
+                <pre class="signature">meassetup</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_meas" name="constant_meas" class="anchor"></a>
+            <article id="constant_meas" class="constant">
+                <h3 class="">meas</h3>
+                <pre class="signature">meas</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_trigger" name="constant_trigger" class="anchor"></a>
+            <article id="constant_trigger" class="constant">
+                <h3 class="">trigger</h3>
+                <pre class="signature">trigger</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_modesetup" name="constant_modesetup" class="anchor"></a>
+            <article id="constant_modesetup" class="constant">
+                <h3 class="">modesetup</h3>
+                <pre class="signature">modesetup</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_mode" name="constant_mode" class="anchor"></a>
+            <article id="constant_mode" class="constant">
+                <h3 class="">mode</h3>
+                <pre class="signature">mode</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_source" name="constant_source" class="anchor"></a>
+            <article id="constant_source" class="constant">
+                <h3 class="">source</h3>
+                <pre class="signature">source</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_trace" name="constant_trace" class="anchor"></a>
+            <article id="constant_trace" class="constant">
+                <h3 class="">trace</h3>
+                <pre class="signature">trace</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_amptd" name="constant_amptd" class="anchor"></a>
+            <article id="constant_amptd" class="constant">
+                <h3 class="">amptd</h3>
+                <pre class="signature">amptd</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_bw" name="constant_bw" class="anchor"></a>
+            <article id="constant_bw" class="constant">
+                <h3 class="">bw</h3>
+                <pre class="signature">bw</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_view" name="constant_view" class="anchor"></a>
+            <article id="constant_view" class="constant">
+                <h3 class="">view</h3>
+                <pre class="signature">view</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_span" name="constant_span" class="anchor"></a>
+            <article id="constant_span" class="constant">
+                <h3 class="">span</h3>
+                <pre class="signature">span</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_autocouple" name="constant_autocouple" class="anchor"></a>
+            <article id="constant_autocouple" class="constant">
+                <h3 class="">autocouple</h3>
+                <pre class="signature">autocouple</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_input" name="constant_input" class="anchor"></a>
+            <article id="constant_input" class="constant">
+                <h3 class="">input</h3>
+                <pre class="signature">input</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getConstantKeyFromString" name="method_getConstantKeyFromString" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getConstantKeyFromString()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getConstantKeyFromString(  <span class="argument">$string</span>) : string</pre>
+                <p><em>Return the name of the buttons&#039;constant
+associated with the string in parameter</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$string </td>
+                                <td><p>string Button name</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>Buttons\Constant name</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getConstantValueFromString" name="method_getConstantValueFromString" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getConstantValueFromString()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getConstantValueFromString(string  <span class="argument">$constantKey</span>) : string</pre>
+                <p><em>Return the value of the buttons&#039;s constant
+associated with the string key in parameter</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$constantKey </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getConstantKeyFromInt" name="method_getConstantKeyFromInt" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getConstantKeyFromInt()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getConstantKeyFromInt(  <span class="argument">$int</span>) : string</pre>
+                <p><em>Return the name of the buttons&#039;constant
+associated with the string in parameter</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$int </td>
+                                <td><p>int Button name</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>Buttons\Constant name</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getConstants" name="method_getConstants" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">getConstants()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getConstants() : array</pre>
+                <p><em>Return all constants of Buttons</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Buttons.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/SignalAnalyzer/Buttons.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Jeremyfornarino.html">\Jeremyfornarino</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on April 17th, 2018 at 22:56.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
